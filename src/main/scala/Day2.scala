@@ -2,8 +2,6 @@ package joe.aoc
 import scala.util.parsing.combinator.RegexParsers
 object Day2 extends App {
 
-  trait Command
-
   case class Game(id: Int, rounds: Seq[Round])
   case class Round(count: Int, colour: String)
 
@@ -51,6 +49,7 @@ object Day2 extends App {
 
   println(check(Helpers.sample(2)))
   println(check(Helpers.input(2)))
+  println(min(Helpers.sample(2)))
   println(min(Helpers.input(2)))
 
 }
