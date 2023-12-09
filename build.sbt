@@ -1,6 +1,6 @@
-ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / version := "1.6.1"
 
-ThisBuild / scalaVersion := "2.13.10"
+ThisBuild / scalaVersion := "3.3.1"
 
 lazy val root = (project in file("."))
   .settings(
@@ -8,5 +8,4 @@ lazy val root = (project in file("."))
     idePackagePrefix := Some("joe.aoc")
   )
 
-libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.1.1"
-libraryDependencies += "org.scala-graph" %% "graph-core" % "1.13.5"
+libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.2.0"

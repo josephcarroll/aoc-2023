@@ -1,6 +1,6 @@
 package joe.aoc
 
-object Day5 extends AocApp(5) {
+object Day10 extends AocApp(10) {
 
   override def part1(input: Seq[String]): Int = {
     -1
@@ -12,4 +12,4 @@ object Day5 extends AocApp(5) {
 
 }
 
-@main def run5(): Unit = Day5.run()
+@main def run10(): Unit = Day10.run()

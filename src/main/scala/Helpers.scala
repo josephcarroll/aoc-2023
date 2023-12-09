@@ -20,7 +20,7 @@ object Helpers {
 
   def splitBySentinel[T](input: Seq[T], sentinelValue: T): Seq[Seq[T]] = {
     @tailrec def split(result: Seq[Seq[T]], remainder: Seq[T]): Seq[Seq[T]] = {
-      if (remainder.isEmpty) {
+      if remainder.isEmpty then {
         result
       } else {
         val (l, r) = remainder.span(_ != sentinelValue)

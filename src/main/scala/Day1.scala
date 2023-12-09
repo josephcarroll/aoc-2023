@@ -1,15 +1,14 @@
 package joe.aoc
 
-object Day1 extends App {
+object Day1 extends AocApp(1, twoSamples = true) {
 
-  def numbers(input: Seq[String]): Int = {
-    input.map { line =>
+  override def part1(input: Seq[String]): Int =
+    input.map: line =>
       val digits = line.filter(_.isDigit).map(_.toString)
       (digits(0) + digits.last).toInt
-    }.sum
-  }
+    .sum
 
-  val characterMap = Map(
+  private val characterMap = Map(
     "one" -> "1",
     "two" -> "2",
     "three" -> "3",
@@ -21,8 +20,8 @@ object Day1 extends App {
     "nine" -> "9"
   )
 
-  def spelt(input: Seq[String]): Int = {
-    input.map { line =>
+  override def part2(input: Seq[String]): Int =
+    input.map: line =>
       val digits = line.zipWithIndex.flatMap {
         case (character, _) if character.isDigit =>
           Some(character.toString)
@@ -33,12 +32,8 @@ object Day1 extends App {
           }
       }
       (digits(0) + digits.last).toInt
-    }.sum
-  }
-
-  println(numbers(Helpers.sample(1)))
-  println(numbers(Helpers.input(1)))
-  println(spelt(Helpers.sample2(1)))
-  println(spelt(Helpers.input(1)))
+    .sum
 
 }
+
+@main def run1(): Unit = Day1.run()

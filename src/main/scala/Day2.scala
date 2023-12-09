@@ -1,6 +1,7 @@
 package joe.aoc
 import scala.util.parsing.combinator.RegexParsers
-object Day2 extends App {
+
+object Day2 extends AocApp(2) {
 
   case class Game(id: Int, rounds: Seq[Round])
   case class Round(count: Int, colour: String)
@@ -19,24 +20,24 @@ object Day2 extends App {
 
   }
 
-  val knownBag = Map(
+  private val knownBag = Map(
     "red" -> 12,
     "blue" -> 14,
     "green" -> 13
   )
 
-  def check(input: Seq[String]): Int = {
+  override def part1(input: Seq[String]): Int = {
     val matching = input.flatMap { line =>
       val game = GameParser.parse(line)
       val ok = game.rounds.forall { round =>
         knownBag(round.colour) >= round.count
       }
-      if (ok) Some(game.id) else None
+      if ok then Some(game.id) else None
     }
     matching.sum
   }
 
-  def min(input: Seq[String]): Int = {
+  override def part2(input: Seq[String]): Int = {
     val matching = input.map { line =>
       val game = GameParser.parse(line)
       val minRequirements = game.rounds.groupBy(_.colour).map { case (_, rounds) =>
@@ -47,9 +48,6 @@ object Day2 extends App {
     matching.sum
   }
 
-  println(check(Helpers.sample(2)))
-  println(check(Helpers.input(2)))
-  println(min(Helpers.sample(2)))
-  println(min(Helpers.input(2)))
-
 }
+
+@main def run2(): Unit = Day2.run()
