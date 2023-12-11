@@ -72,11 +72,10 @@ object Day10 extends AocApp(10) {
       j <- input.head.indices
       if !pathSet.contains(Coordinate(i, j))
     yield
-      val intersections = Range(j - 1, 0, -1).flatMap(jDelta => pathSet.get(Coordinate(i, j + jDelta)))
-      intersections.count(n => Set('-', 'J', '7', 'S').contains(n.char))
+      val intersections = Range(0, j).flatMap(jDelta => pathSet.get(Coordinate(i, jDelta)))
+      intersections.count(n => Set('-', 'J', '7').contains(n.char))
 
-    // odd is in
-    counts.count(_ % 2 != 0) // 563!
+    counts.count(_ % 2 != 0)
   }
 
 }
